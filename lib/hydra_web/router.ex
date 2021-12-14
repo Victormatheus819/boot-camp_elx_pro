@@ -1,14 +1,18 @@
 defmodule HydraWeb.Router do
   use HydraWeb, :router
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
+  # pipeline :api do
+  #   plug :accepts, ["json"]
+  # end
 
-  scope "/api", HydraWeb do
-    pipe_through :api
-  end
-  scope "/", HydraWeb do
-    foward "graphql", Absinte.Plug, schema: HydraGraphql.Schema, json_code: Jason
-  end
+  # scope "/api", HydraWeb do
+  #   pipe_through :api
+  # end
+  
+  scope "/" do
+    forward "/graphql", Absinthe.Plug, schema: HydraGraphql.Schema, json_code: Jason
+    if Mix.env() == :dev do
+      forward "/graphiql",Absinthe.Plug.GraphiQL, schema: HydraGrapgql.Schema,json_code: Jason
+    end
+  end  
 end

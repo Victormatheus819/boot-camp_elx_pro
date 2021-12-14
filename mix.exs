@@ -53,19 +53,17 @@ defmodule Hydra.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}, # Analise de Codigo
       {:excoveralls, "~> 0.10", only: :test}, # Cobertura de Testes
       {:mix_test_watch, "~> 1.0", only: :dev}, # TDD
-
       {:absinthe, "~> 1.6"}, #GraphQl
-      {:absinthe_relay, "~> 1.5", override: true}, 
-			#https://relay.dev construir apps escalaveis
+      {:absinthe_relay, "~> 1.5", override: true}, #https://relay.dev construir apps escalaveis
       {:absinthe_plug, "~> 1.5", override: true},
       {:absinthe_phoenix, "~> 2.0"}, #utilizar com websockets
-      {:absinthe_error_payload, "~> 1.1"}, #lidar com erros de maneira Simples
-      {:dataloader, "~> 1.0.0"}, #lidar com queries de banco de dados
-      {:mock, "~> 0.3.0", only: :test}, # para mocar dados,
+       {:absinthe_error_payload, "~> 1.1"}, #lidar com erros de maneira Simples
+       {:dataloader, "~> 1.0.0"}, #lidar com queries de banco de dados
+       {:mock, "~> 0.3.0", only: :test}, # para mocar dados,
 
-			{:brod, "~> 3.15"},
-      {:broadway, "~> 1.0"}, 
-      {:broadway_kafka, "~> 0.3.0"}
+			 {:brod, "~> 3.15"},
+       {:broadway, "~> 1.0"}, 
+       {:broadway_kafka, "~> 0.3.0"}
 		
     ]
   end
