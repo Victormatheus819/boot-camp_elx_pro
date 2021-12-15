@@ -15,9 +15,10 @@ defmodule Hydra.Application do
       {Phoenix.PubSub, name: Hydra.PubSub},
       # Start the Endpoint (http/https)
       HydraWeb.Endpoint,
-      {Hydra.Pickings.Workers.ConsumeProductsFromKafka,[]}
+      {Hydra.Pickings.Workers.ConsumeProductsFromKafka,Application.get_env(:hydra , :picking_consumer)}
       # Start a worker by calling: Hydra.Worker.start_link(arg)
       # {Hydra.Worker, arg}
+      {Mongo,Aplication.get_env(:hydra,:mongo_config)}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

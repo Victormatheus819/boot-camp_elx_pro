@@ -62,9 +62,11 @@ defmodule Hydra.MixProject do
        {:mock, "~> 0.3.0", only: :test}, # para mocar dados,
 
 			 {:brod, "~> 3.15"},
-       {:broadway, "~> 1.0"}, 
-       {:broadway_kafka, "~> 0.3.0"}
-		
+       {:broadway, "~> 1.0"},
+       {:broadway_kafka, "~> 0.3.0"},
+       {:mongodb_driver, "~> 0.7.4"},
+       {:poolboy, ">= 0.0.0"},
+
     ]
   end
 
