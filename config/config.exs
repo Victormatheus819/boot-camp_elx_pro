@@ -23,9 +23,10 @@ config :hydra, HydraWeb.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-config :hydra , :mongo_config
-  name: :mongo
-  url:""
+config :hydra , :mongo_config,
+  name: :mongo,
+  url: "mongodb+srv://abobora123:abobora123@cluster0.ton48.azure.mongodb.net/pickings",
+  poll_size: 2
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 import_config "kafka.picking.consumer.config.exs"

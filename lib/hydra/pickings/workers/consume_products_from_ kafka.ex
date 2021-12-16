@@ -1,6 +1,7 @@
 defmodule Hydra.Pickings.Workers.ConsumeProductsFromKafka do
     use Broadway
     alias Broadway.Message
+    alias Hydra.Pickings
     def start_link(opts) do
       IO.inspect opts
       Broadway.start_link(__MODULE__,opts)
@@ -14,7 +15,7 @@ defmodule Hydra.Pickings.Workers.ConsumeProductsFromKafka do
       |>Message.put_batcher(:mongo)
     end
 
-    def handle_batch(:mongo, messages ,_batch_info, _context) do
-      Enum.map(messages,&Pickings.store_pickings_into_mongo(&1.data))
+    def handle_batch(:mongo, messages , _batch_info, _context) do
+      Enum.map(messages , &Pickings.store_pickings_into_mongo(&1.data))
     end
   end
