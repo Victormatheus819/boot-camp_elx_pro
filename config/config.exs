@@ -30,6 +30,7 @@ config :hydra , :mongo_config,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 import_config "kafka.picking.consumer.config.exs"
+import_config "poolboy.mongo.config.exs"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

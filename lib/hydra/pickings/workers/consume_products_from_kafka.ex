@@ -16,6 +16,7 @@ defmodule Hydra.Pickings.Workers.ConsumeProductsFromKafka do
     end
 
     def handle_batch(:mongo, messages , _batch_info, _context) do
+      IO.inspect(messages, label: "Abobora")
       Enum.map(messages , &Pickings.store_pickings_into_mongo(&1.data))
     end
   end

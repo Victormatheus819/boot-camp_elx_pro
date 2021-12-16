@@ -6,6 +6,7 @@ defmodule Hydra.Application do
   use Application
 
   def start(_type, _args) do
+
     children = [
       # Start the Ecto repository
       Hydra.Repo,
@@ -15,6 +16,7 @@ defmodule Hydra.Application do
       {Phoenix.PubSub, name: Hydra.PubSub},
       # Start the Endpoint (http/https)
       HydraWeb.Endpoint,
+      :poolboy.child_spec(:worker, Application.get_env(:hydra, :mongo_poolboy)),
       {Hydra.Pickings.Workers.ConsumeProductsFromKafka,Application.get_env(:hydra , :picking_consumer)},
       # Start a worker by calling: Hydra.Worker.start_link(arg)
       # {Hydra.Worker, arg}
